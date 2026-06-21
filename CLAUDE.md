@@ -40,10 +40,14 @@ assume Cristi wants those next, ask first.
   `ppm_write` always emits binary PPM (P6); no P3 output support.
 - `filters.c`/`filters.h` — `filter_grayscale`, `filter_invert`,
   `filter_flip` (horizontal mirror), `filter_brightness` (takes an
-  `amount` param, wired into the CLI), `filter_blur` (3x3 box blur).
+  `amount` param, wired into the CLI), `filter_blur` (3x3 box blur),
+  `filter_rotate` (clockwise multiples of 90 degrees; swaps width/height
+  via a reallocated buffer for 90/270, reuses a static `rotate90_cw`
+  helper applied 0-3 times based on `degrees`).
 - `main.c` — CLI dispatch: `./imgproc <input.ppm> <filter> <output.ppm> [amount]`.
-  Wired filters: `grayscale`, `invert`, `flip`, `blur`, `brightness`
-  (the only one taking the trailing `amount` arg, validated by argc).
+  Wired filters: `grayscale`, `invert`, `flip`, `blur`, `brightness`,
+  `rotate` (`brightness` and `rotate` are the two taking the trailing
+  numeric arg, validated by argc).
 - `Makefile` — builds `imgproc` from `main.c ppm.c filters.c`.
 - Everything was kept intentionally minimal/unoptimized since the C code
   was a vehicle for git lessons, not the focus — expect rougher edges

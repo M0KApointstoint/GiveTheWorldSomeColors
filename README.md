@@ -23,9 +23,12 @@ creates such an image. The output ppm file does not need to exist.
 ./imgproc <input.ppm> <filter> <output.ppm> [amount]
 ```
 
-Supported filters: `grayscale`, `invert`, `flip`, `blur`, `brightness`.
-`brightness` requires a trailing `<amount>` (integer, can be negative);
-it's added to every pixel value and clamped to `[0, 255]`.
+Supported filters: `grayscale`, `invert`, `flip`, `blur`, `brightness`,
+`rotate`. `brightness` and `rotate` require a trailing `<amount>`:
+- `brightness <amount>` — integer (can be negative), added to every pixel
+  value and clamped to `[0, 255]`.
+- `rotate <degrees>` — clockwise rotation, must be a multiple of 90
+  (e.g. `90`, `180`, `270`, `-90`).
 
 ## Learning git from this repo
 

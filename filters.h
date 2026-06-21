@@ -8,5 +8,6 @@ void filter_invert(Image *img);
 void filter_flip(Image *img);
 void filter_brightness(Image *img, int amount);
 void filter_blur(Image *img);
+void filter_rotate(Image *img, int degrees);
 
 #endif

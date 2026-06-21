@@ -69,3 +69,32 @@ void filter_blur(Image *img) {
 
     free(src);
 }
+
+/* Rotates the image 90 degrees clockwise; swaps width/height. */
+static void rotate90_cw(Image *img) {
+    int sw = img->width, sh = img->height;
+    int dw = sh, dh = sw;
+    unsigned char *dst = malloc((size_t)dw * dh * 3);
+
+    for (int yd = 0; yd < dh; yd++) {
+        for (int xd = 0; xd < dw; xd++) {
+            int xs = yd;
+            int ys = dw - 1 - xd;
+            memcpy(dst + ((size_t)yd * dw + xd) * 3,
+                   img->pixels + ((size_t)ys * sw + xs) * 3, 3);
+        }
+    }
+
+    free(img->pixels);
+    img->pixels = dst;
+    img->width = dw;
+    img->height = dh;
+}
+
+/* Rotates the image clockwise by degrees, which must be a multiple of 90. */
+void filter_rotate(Image *img, int degrees) {
+    int steps = ((degrees / 90) % 4 + 4) % 4;
+    for (int i = 0; i < steps; i++) {
+        rotate90_cw(img);
+    }
+}

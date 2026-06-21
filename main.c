@@ -10,12 +10,12 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    int is_brightness = strcmp(argv[2], "brightness") == 0;
-    if (is_brightness && argc != 5) {
-        fprintf(stderr, "usage: %s <input.ppm> brightness <output.ppm> <amount>\n", argv[0]);
+    int needs_arg = strcmp(argv[2], "brightness") == 0 || strcmp(argv[2], "rotate") == 0;
+    if (needs_arg && argc != 5) {
+        fprintf(stderr, "usage: %s <input.ppm> %s <output.ppm> <amount>\n", argv[0], argv[2]);
         return 1;
     }
-    if (!is_brightness && argc != 4) {
+    if (!needs_arg && argc != 4) {
         fprintf(stderr, "usage: %s <input.ppm> <filter> <output.ppm>\n", argv[0]);
         return 1;
     }
@@ -34,8 +34,10 @@ int main(int argc, char **argv) {
         filter_flip(img);
     } else if (strcmp(argv[2], "blur") == 0) {
         filter_blur(img);
-    } else if (is_brightness) {
+    } else if (strcmp(argv[2], "brightness") == 0) {
         filter_brightness(img, atoi(argv[4]));
+    } else if (strcmp(argv[2], "rotate") == 0) {
+        filter_rotate(img, atoi(argv[4]));
     } else {
         fprintf(stderr, "unknown filter: %s\n", argv[2]);
         ppm_free(img);
