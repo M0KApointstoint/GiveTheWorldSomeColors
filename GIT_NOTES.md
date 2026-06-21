@@ -52,3 +52,12 @@ future-me to skim before picking the project back up.
   fixed" — then `git commit` (no `-m`, git pre-fills a merge message).
 - The result is a merge commit with two parents — visible in
   `git log --oneline --graph --all` as two lines joining into one.
+
+## Stage 6 — stashing
+
+- `git stash` shelves uncommitted changes and gives you back a clean
+  working tree, without committing half-finished work.
+- `git stash list` shows what's shelved; `git stash pop` restores the most
+  recent one (and removes it from the stash list).
+- Use this for "I need to switch context but I'm not done" — not as a
+  substitute for committing real progress.

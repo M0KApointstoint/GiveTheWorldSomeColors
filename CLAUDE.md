@@ -18,4 +18,4 @@ deliverable in itself.
 
 # Current stage
 
-Stage 6 (git stash, interrupted invert-filter-style work) — in progress.
+Stage 7 (undo tools: amend, revert, reset) — in progress.
