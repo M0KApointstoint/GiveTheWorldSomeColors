@@ -15,3 +15,19 @@ void filter_invert(Image *img) {
         img->pixels[i] = (unsigned char)(255 - img->pixels[i]);
     }
 }
+
+/* Flips the image horizontally (mirrors left-right). */
+void filter_flip(Image *img) {
+    for (int y = 0; y < img->height; y++) {
+        unsigned char *row = img->pixels + (long)y * img->width * 3;
+        for (int x = 0; x < img->width / 2; x++) {
+            unsigned char *a = row + x * 3;
+            unsigned char *b = row + (img->width - 1 - x) * 3;
+            for (int c = 0; c < 3; c++) {
+                unsigned char tmp = a[c];
+                a[c] = b[c];
+                b[c] = tmp;
+            }
+        }
+    }
+}
