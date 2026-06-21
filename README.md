@@ -1,10 +1,19 @@
 # give_the_world_some_colors
 
+**The whole point of this project is not the image processor itself.**
+
 A small C image processor for PPM files, built step by step while learning
 the core git workflow. Input accepts both binary (P6) and ASCII (P3) PPM;
 output is always written as binary PPM (P6). The commit history is
 intentionally incremental — each stage of `GIT_NOTES.md` corresponds to a
 real commit or two, so the history itself is part of the lesson.
+
+## Acquired skills:
+
+- Using Claude Code
+- Learning more about using git
+- Manually handling git commands
+- Reviewing code that is not writted by me
 
 ## Building
 
