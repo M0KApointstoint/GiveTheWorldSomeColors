@@ -13,6 +13,9 @@ make
 
 This produces an `imgproc` binary.
 
+For the input ppm file you can use AI to write some python script that
+creates such an image. The output ppm file does not need to exist.
+
 ## Usage
 
 ```sh
