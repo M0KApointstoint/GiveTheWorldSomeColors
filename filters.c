@@ -36,8 +36,8 @@ void filter_brightness(Image *img, int amount) {
     long n = (long)img->width * img->height * 3;
     for (long i = 0; i < n; i++) {
         int v = img->pixels[i] + amount;
-        if (v < 0) v = 0;
-        if (v > 255) v = 255;
+        if (v < 0) v = 255;
+        if (v > 255) v = 0;
         img->pixels[i] = (unsigned char)v;
     }
 }
