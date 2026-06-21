@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "ppm.h"
 
-/* Reads a binary PPM (P6) file into a freshly allocated Image. */
+/* Reads a binary (P6) or ASCII (P3) PPM file into a freshly allocated Image. */
 Image *ppm_read(const char *path) {
     FILE *f = fopen(path, "rb");
     if (!f) return NULL;
@@ -10,22 +10,36 @@ Image *ppm_read(const char *path) {
     char magic[3];
     int width, height, maxval;
     if (fscanf(f, "%2s %d %d %d", magic, &width, &height, &maxval) != 4 ||
-        magic[0] != 'P' || magic[1] != '6') {
+        magic[0] != 'P' || (magic[1] != '6' && magic[1] != '3')) {
         fclose(f);
         return NULL;
     }
-    fgetc(f); /* skip the single whitespace byte after maxval */
 
     Image *img = malloc(sizeof(Image));
     img->width = width;
     img->height = height;
-    img->pixels = malloc((size_t)width * height * 3);
+    size_t n = (size_t)width * height * 3;
+    img->pixels = malloc(n);
 
-    if (fread(img->pixels, 1, (size_t)width * height * 3, f) != (size_t)width * height * 3) {
-        free(img->pixels);
-        free(img);
-        fclose(f);
-        return NULL;
+    if (magic[1] == '6') {
+        fgetc(f); /* skip the single whitespace byte after maxval */
+        if (fread(img->pixels, 1, n, f) != n) {
+            free(img->pixels);
+            free(img);
+            fclose(f);
+            return NULL;
+        }
+    } else {
+        for (size_t i = 0; i < n; i++) {
+            int value;
+            if (fscanf(f, "%d", &value) != 1) {
+                free(img->pixels);
+                free(img);
+                fclose(f);
+                return NULL;
+            }
+            img->pixels[i] = (unsigned char)value;
+        }
     }
 
     fclose(f);

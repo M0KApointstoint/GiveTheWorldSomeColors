@@ -26,8 +26,8 @@ assume Cristi wants those next, ask first.
 
 - `ppm.h` — `Image` struct: `width`, `height`, `pixels` (flat RGB byte
   array, 3 bytes per pixel, row-major).
-- `ppm.c` — `ppm_read`/`ppm_write` for binary PPM (P6) only. No support
-  for ASCII PPM (P3) or other formats.
+- `ppm.c` — `ppm_read` accepts both binary (P6) and ASCII (P3) PPM input.
+  `ppm_write` always emits binary PPM (P6); no P3 output support.
 - `filters.c`/`filters.h` — `filter_grayscale`, `filter_invert`,
   `filter_flip` (horizontal mirror), `filter_brightness` (takes an
   `amount` param, not wired into the CLI), `filter_blur` (3x3 box blur).
