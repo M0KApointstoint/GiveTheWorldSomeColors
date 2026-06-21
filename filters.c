@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include <string.h>
 #include "filters.h"
 
 void filter_grayscale(Image *img) {
@@ -40,4 +42,30 @@ void filter_brightness(Image *img, int amount) {
         if (v > 255) v = 255;
         img->pixels[i] = (unsigned char)v;
     }
+}
+
+/* Simple 3x3 box blur: each pixel becomes the average of its neighbors. */
+void filter_blur(Image *img) {
+    size_t n = (size_t)img->width * img->height * 3;
+    unsigned char *src = malloc(n);
+    memcpy(src, img->pixels, n);
+
+    for (int y = 0; y < img->height; y++) {
+        for (int x = 0; x < img->width; x++) {
+            for (int c = 0; c < 3; c++) {
+                int sum = 0, count = 0;
+                for (int dy = -1; dy <= 1; dy++) {
+                    for (int dx = -1; dx <= 1; dx++) {
+                        int ny = y + dy, nx = x + dx;
+                        if (ny < 0 || ny >= img->height || nx < 0 || nx >= img->width) continue;
+                        sum += src[((size_t)ny * img->width + nx) * 3 + c];
+                        count++;
+                    }
+                }
+                img->pixels[((size_t)y * img->width + x) * 3 + c] = (unsigned char)(sum / count);
+            }
+        }
+    }
+
+    free(src);
 }

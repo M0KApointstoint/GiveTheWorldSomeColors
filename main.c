@@ -21,6 +21,8 @@ int main(int argc, char **argv) {
         filter_invert(img);
     } else if (strcmp(argv[2], "flip") == 0) {
         filter_flip(img);
+    } else if (strcmp(argv[2], "blur") == 0) {
+        filter_blur(img);
     } else {
         fprintf(stderr, "unknown filter: %s\n", argv[2]);
         ppm_free(img);
