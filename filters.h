@@ -4,5 +4,6 @@
 #include "ppm.h"
 
 void filter_grayscale(Image *img);
+void filter_flip(Image *img);
 
 #endif
