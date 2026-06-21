@@ -8,3 +8,10 @@ void filter_grayscale(Image *img) {
         p[0] = p[1] = p[2] = gray;
     }
 }
+
+void filter_invert(Image *img) {
+    long n = (long)img->width * img->height * 3;
+    for (long i = 0; i < n; i++) {
+        img->pixels[i] = (unsigned char)(255 - img->pixels[i]);
+    }
+}

@@ -17,6 +17,8 @@ int main(int argc, char **argv) {
 
     if (strcmp(argv[2], "grayscale") == 0) {
         filter_grayscale(img);
+    } else if (strcmp(argv[2], "invert") == 0) {
+        filter_invert(img);
     } else {
         fprintf(stderr, "unknown filter: %s\n", argv[2]);
         ppm_free(img);
