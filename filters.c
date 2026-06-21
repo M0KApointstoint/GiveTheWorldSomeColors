@@ -34,7 +34,7 @@ void filter_flip(Image *img) {
 
 void filter_brightness(Image *img, int amount) {
     long n = (long)img->width * img->height * 3;
-    for (long i = 0; i <= n; i++) { /* bug: off-by-one, reads/writes one byte past the buffer */
+    for (long i = 0; i < n; i++) {
         int v = img->pixels[i] + amount;
         if (v < 0) v = 0;
         if (v > 255) v = 255;
