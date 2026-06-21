@@ -13,6 +13,16 @@ deliverable in itself.
   why rather than running git on his behalf.
 - Update `GIT_NOTES.md` if any further git lessons happen in this repo.
 
+# Git ownership (as of 2026-06-21)
+
+- The 8-stage lesson plan is done. Going forward, **Cristi owns all git
+  operations in this repo, for all future work, not just lesson stages** —
+  Claude must not run git commands (add/commit/branch/merge/tag/etc.) on
+  his behalf, even if it would be convenient mid-task.
+- Claude's job from here is to write/explain C code; Cristi will report
+  back what he did or plans to do via git after each meaningful step, for
+  Claude to review.
+
 # Git lessons: status
 
 All 8 planned stages complete as of tag `v1.0`. Core local git workflow

@@ -30,3 +30,6 @@ Supported filters: `grayscale`, `invert`, `flip`, `blur`.
 See `GIT_NOTES.md` for a stage-by-stage recap of the git concepts covered
 (init, diffs/staging, branching, merging, conflicts, stashing, undo tools,
 tagging) alongside the commands used.
+
+The git history and workflow for this repo is driven directly by Cristi —
+all commits, branches, and other git operations are his own.
