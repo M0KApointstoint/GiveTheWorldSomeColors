@@ -61,3 +61,15 @@ future-me to skim before picking the project back up.
   recent one (and removes it from the stash list).
 - Use this for "I need to switch context but I'm not done" — not as a
   substitute for committing real progress.
+
+## Stage 7 — undo tools: amend, revert, reset
+
+- `git commit --amend` replaces the most recent commit (message and/or
+  content) instead of adding a new one. Only safe if that commit hasn't
+  been pushed/shared yet — it rewrites history.
+- `git revert <hash>` adds a *new* commit that undoes an earlier commit's
+  changes. History stays intact — safe even on shared commits.
+- `git reset` moves the branch pointer backward: `--soft` keeps changes
+  staged, `--mixed` (default) unstages but keeps them in the working dir,
+  `--hard` discards them entirely.
+- Rule of thumb: not pushed yet → amend is fine. Already shared → revert.

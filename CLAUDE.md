@@ -18,4 +18,4 @@ deliverable in itself.
 
 # Current stage
 
-Stage 7 (undo tools: amend, revert, reset) — in progress.
+Stage 8 (Makefile, blur filter, tagging, public-repo prep) — in progress.
