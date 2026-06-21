@@ -39,3 +39,16 @@ future-me to skim before picking the project back up.
   if you want a visible marker that a feature branch happened.
 - `git branch -d <name>` deletes a branch that's been merged (safe — git
   warns you if it isn't merged yet).
+
+## Stage 5 — merge conflicts
+
+- A conflict happens when two branches change the same lines of the same
+  file differently — git refuses to guess and stops the merge.
+- Markers in the file: `<<<<<<< HEAD` = your current branch's version,
+  `=======` = divider, `>>>>>>> branch-name` = the incoming branch's version.
+- Resolve by editing the file to what it should actually be, deleting all
+  three marker lines, then `git add` the file (this also marks it resolved).
+- Once every conflicted file is `add`ed, `git status` says "all conflicts
+  fixed" — then `git commit` (no `-m`, git pre-fills a merge message).
+- The result is a merge commit with two parents — visible in
+  `git log --oneline --graph --all` as two lines joining into one.

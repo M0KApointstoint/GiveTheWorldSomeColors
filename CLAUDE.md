@@ -18,4 +18,4 @@ deliverable in itself.
 
 # Current stage
 
-Stage 5 (deliberate merge conflict and resolution) — in progress.
+Stage 6 (git stash, interrupted invert-filter-style work) — in progress.
