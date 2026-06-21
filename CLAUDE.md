@@ -18,4 +18,4 @@ deliverable in itself.
 
 # Current stage
 
-Stage 1 (init, skeleton, first commit) — in progress.
+Stage 5 (deliberate merge conflict and resolution) — in progress.
