@@ -1,9 +1,10 @@
 # give_the_world_some_colors
 
-A small C image processor for binary PPM (P6) files, built step by step
-while learning the core git workflow. The commit history is intentionally
-incremental — each stage of `GIT_NOTES.md` corresponds to a real commit
-or two, so the history itself is part of the lesson.
+A small C image processor for PPM files, built step by step while learning
+the core git workflow. Input accepts both binary (P6) and ASCII (P3) PPM;
+output is always written as binary PPM (P6). The commit history is
+intentionally incremental — each stage of `GIT_NOTES.md` corresponds to a
+real commit or two, so the history itself is part of the lesson.
 
 ## Building
 
