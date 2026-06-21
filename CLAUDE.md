@@ -18,4 +18,11 @@ deliverable in itself.
 
 # Current stage
 
-Stage 8 (Makefile, blur filter, tagging, public-repo prep) — in progress.
+All 8 stages complete as of tag `v1.0`. Core local git workflow covered:
+init, staging/diff, branching, merging (fast-forward and merge commit),
+conflict resolution, stashing, undo tools (amend/revert/reset), tagging.
+
+If Cristi comes back wanting more: natural next topics are GitHub-specific
+collaboration (remotes, push/pull, pull requests, issues) and `git rebase`,
+neither of which was in scope for this round (he chose core local workflow
+only). Don't assume he wants those next — ask first.

@@ -73,3 +73,13 @@ future-me to skim before picking the project back up.
   staged, `--mixed` (default) unstages but keeps them in the working dir,
   `--hard` discards them entirely.
 - Rule of thumb: not pushed yet → amend is fine. Already shared → revert.
+
+## Stage 8 — tagging and release prep
+
+- `git tag -a v1.0 -m "..."` creates an annotated tag — a permanent named
+  pointer to one commit. Unlike a branch, it never moves.
+- `git tag` lists tags; `git show <tag>` shows what commit it points to.
+- `git branch -m old new` renames a branch — used here to rename the
+  default `master` to `main`, matching GitHub's current default.
+- This stage closes out the local git workflow lessons: init, staging/diff,
+  branching, merging, conflicts, stashing, undo tools, tagging.
